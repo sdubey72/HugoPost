@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post on DataScience</title>
-    <link>/post/</link>
+    <link>https://shdubey.netlify.com/post/</link>
     <description>Recent content in Post on DataScience</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://shdubey.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Data Visualization </title>
-      <link>/post/data-visualization/</link>
+      <link>https://shdubey.netlify.com/post/data-visualization/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/data-visualization/</guid>
+      <guid>https://shdubey.netlify.com/post/data-visualization/</guid>
       <description>Scattered plotData visualization is a general term that describes any effort to help people understand the significance of data by placing it in a visual context. Patterns, trends and correlations that might go undetected in text-based data can be exposed and recognized easier.
 Here we will explore following libraries
 dplyr , Lahman , ggplot2 and ggiraph
@@ -25,10 +25,10 @@ Here we will explore following libraries
     
     <item>
       <title>Data Visualization -2</title>
-      <link>/post/data-visualization-2/</link>
+      <link>https://shdubey.netlify.com/post/data-visualization-2/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/data-visualization-2/</guid>
+      <guid>https://shdubey.netlify.com/post/data-visualization-2/</guid>
       <description>Bar graph and HistogramIn this post we’ll learn to draw Bar-graph and Histogram using the following libraries. &amp;gt; dplyr , &amp;gt; Lahman , &amp;gt; ggplot2 and &amp;gt; ggiraph
 Here we will all the teams who played in the year 1980’s.
 data1&amp;lt;-Teams%&amp;gt;%filter(yearID==1980)%&amp;gt;%select(teamID,HR)data1## teamID HR## 1 ATL 144## 2 BAL 156## 3 BOS 162## 4 CAL 106## 5 CHA 91## 6 CHN 107## 7 CIN 113## 8 CLE 89## 9 DET 143## 10 HOU 75## 11 KCA 115## 12 LAN 148## 13 MIN 99## 14 ML4 203## 15 MON 114## 16 NYA 189## 17 NYN 61## 18 OAK 137## 19 PHI 117## 20 PIT 116## 21 SDN 67## 22 SEA 104## 23 SFN 80## 24 SLN 101## 25 TEX 124## 26 TOR 126and plot a bar-graph !</description>
