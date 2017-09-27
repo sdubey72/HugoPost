@@ -1,0 +1,697 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Data Visualization -2</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.29" />
+        
+
+
+        
+            <meta name="author" content="Shraddha Dubey">
+        
+        
+            
+                <meta name="description" content="HTML5 UP theme, Future Imperfect with some extra goodies, ported by Julio Pescador. Powered by Hugo">
+            
+        
+
+        <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Data Visualization -2"/>
+<meta name="twitter:description" content="Bar graph and HistogramIn this post we’ll learn to draw Bar-graph and Histogram using the following libraries. &gt; dplyr , &gt; Lahman , &gt; ggplot2 and &gt; ggiraph
+Here we will all the teams who played in the year 1980’s.
+data1&lt;-Teams%&gt;%filter(yearID==1980)%&gt;%select(teamID,HR)data1## teamID HR## 1 ATL 144## 2 BAL 156## 3 BOS 162## 4 CAL 106## 5 CHA 91## 6 CHN 107## 7 CIN 113## 8 CLE 89## 9 DET 143## 10 HOU 75## 11 KCA 115## 12 LAN 148## 13 MIN 99## 14 ML4 203## 15 MON 114## 16 NYA 189## 17 NYN 61## 18 OAK 137## 19 PHI 117## 20 PIT 116## 21 SDN 67## 22 SEA 104## 23 SFN 80## 24 SLN 101## 25 TEX 124## 26 TOR 126and plot a bar-graph !"/>
+
+        <meta property="og:title" content="Data Visualization -2" />
+<meta property="og:description" content="Bar graph and HistogramIn this post we’ll learn to draw Bar-graph and Histogram using the following libraries. &gt; dplyr , &gt; Lahman , &gt; ggplot2 and &gt; ggiraph
+Here we will all the teams who played in the year 1980’s.
+data1&lt;-Teams%&gt;%filter(yearID==1980)%&gt;%select(teamID,HR)data1## teamID HR## 1 ATL 144## 2 BAL 156## 3 BOS 162## 4 CAL 106## 5 CHA 91## 6 CHN 107## 7 CIN 113## 8 CLE 89## 9 DET 143## 10 HOU 75## 11 KCA 115## 12 LAN 148## 13 MIN 99## 14 ML4 203## 15 MON 114## 16 NYA 189## 17 NYN 61## 18 OAK 137## 19 PHI 117## 20 PIT 116## 21 SDN 67## 22 SEA 104## 23 SFN 80## 24 SLN 101## 25 TEX 124## 26 TOR 126and plot a bar-graph !" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/data-visualization-2/" />
+
+
+
+<meta property="article:published_time" content="2017-09-27T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2017-09-27T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Data Visualization -2">
+<meta itemprop="description" content="Bar graph and HistogramIn this post we’ll learn to draw Bar-graph and Histogram using the following libraries. &gt; dplyr , &gt; Lahman , &gt; ggplot2 and &gt; ggiraph
+Here we will all the teams who played in the year 1980’s.
+data1&lt;-Teams%&gt;%filter(yearID==1980)%&gt;%select(teamID,HR)data1## teamID HR## 1 ATL 144## 2 BAL 156## 3 BOS 162## 4 CAL 106## 5 CHA 91## 6 CHN 107## 7 CIN 113## 8 CLE 89## 9 DET 143## 10 HOU 75## 11 KCA 115## 12 LAN 148## 13 MIN 99## 14 ML4 203## 15 MON 114## 16 NYA 189## 17 NYN 61## 18 OAK 137## 19 PHI 117## 20 PIT 116## 21 SDN 67## 22 SEA 104## 23 SFN 80## 24 SLN 101## 25 TEX 124## 26 TOR 126and plot a bar-graph !">
+
+
+<meta itemprop="dateModified" content="2017-09-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="375">
+
+
+
+<meta itemprop="keywords" content="dplyr,ggplot2,Lahman," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+        
+
+        
+
+        
+            
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      
+          <h1><a href="/">post</a></h1>
+      
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/blog/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/itemized/">
+                            <i class="fa fa-list">&nbsp;</i>Itemized
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/itemized/">
+                            <h3>
+                                <i class="fa fa-list">&nbsp;</i>Itemized
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="/post/data-visualization/"><p>Data Visualization </p></a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/data-visualization-2/"><p>Data Visualization -2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/"><p>Post</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="/post/data-visualization-2/">Data Visualization -2</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2017-09-27'>
+            September 27, 2017</time>
+        <span class="author">Shraddha Dubey</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </ul>
+    </section>
+    
+
+    
+
+    <div id="content">
+        <div id="bar-graph-and-histogram" class="section level1">
+<h1><strong>Bar graph and Histogram</strong></h1>
+<p>In this post we’ll learn to draw Bar-graph and Histogram using the following libraries. &gt; dplyr , &gt; Lahman , &gt; ggplot2 and &gt; ggiraph</p>
+<p>Here we will all the teams who played in the year 1980’s.</p>
+<pre class="r"><code>data1&lt;-Teams%&gt;%
+  filter(yearID==1980)%&gt;%
+  select(teamID,HR)
+
+data1</code></pre>
+<pre><code>##    teamID  HR
+## 1     ATL 144
+## 2     BAL 156
+## 3     BOS 162
+## 4     CAL 106
+## 5     CHA  91
+## 6     CHN 107
+## 7     CIN 113
+## 8     CLE  89
+## 9     DET 143
+## 10    HOU  75
+## 11    KCA 115
+## 12    LAN 148
+## 13    MIN  99
+## 14    ML4 203
+## 15    MON 114
+## 16    NYA 189
+## 17    NYN  61
+## 18    OAK 137
+## 19    PHI 117
+## 20    PIT 116
+## 21    SDN  67
+## 22    SEA 104
+## 23    SFN  80
+## 24    SLN 101
+## 25    TEX 124
+## 26    TOR 126</code></pre>
+<p>and plot a bar-graph !</p>
+<pre class="r"><code>ggplot()+
+  geom_bar(data = data1 , aes(x=teamID,y=HR),stat = &quot;identity&quot;,color=&quot;red&quot;,fill=&quot;blue&quot;)</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Here it is ! But it looks very cluttered . Lets see if we can change the axis and make it more readable.</p>
+<pre class="r"><code>data2&lt;-Teams%&gt;%
+  filter(yearID==1980)%&gt;%
+  select(name,HR)%&gt;%
+  arrange(HR)
+
+data2$name&lt;-factor(data2$name,levels = data2$name)
+
+data2</code></pre>
+<pre><code>##                     name  HR
+## 1          New York Mets  61
+## 2       San Diego Padres  67
+## 3         Houston Astros  75
+## 4   San Francisco Giants  80
+## 5      Cleveland Indians  89
+## 6      Chicago White Sox  91
+## 7        Minnesota Twins  99
+## 8    St. Louis Cardinals 101
+## 9       Seattle Mariners 104
+## 10     California Angels 106
+## 11          Chicago Cubs 107
+## 12       Cincinnati Reds 113
+## 13        Montreal Expos 114
+## 14    Kansas City Royals 115
+## 15    Pittsburgh Pirates 116
+## 16 Philadelphia Phillies 117
+## 17         Texas Rangers 124
+## 18     Toronto Blue Jays 126
+## 19     Oakland Athletics 137
+## 20        Detroit Tigers 143
+## 21        Atlanta Braves 144
+## 22   Los Angeles Dodgers 148
+## 23     Baltimore Orioles 156
+## 24        Boston Red Sox 162
+## 25      New York Yankees 189
+## 26     Milwaukee Brewers 203</code></pre>
+<pre class="r"><code>ggplot()+
+  geom_bar(data = data2 , aes(x=name,y=HR),stat = &quot;identity&quot;,color=&quot;black&quot;,fill=&quot;light blue&quot;)+
+  coord_flip()</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Now lets try to do some histogram.</p>
+<pre class="r"><code>df&lt;-Master%&gt;%
+  filter(!is.na(weight))%&gt;%
+  select(weight)</code></pre>
+<pre class="r"><code>ggplot()+
+  geom_histogram(data=df,aes(x=weight),color=&quot;white&quot;,fill=&quot;blue&quot;)+
+  ggtitle(&quot;baseball players weights&quot;)</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/blogdown'>blogdown</a></li>
+    
+        <li><a href='/categories/r'>R</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+
+    
+        <li><a href="/post/data-visualization/"
+                class="button big next">Data Visualization </a></li>
+    
+</ul>
+
+
+
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <img src="/img/main/myself.jpg" class="intro-circle" width="" alt="Data Science Corner" />
+                
+            
+            
+                <header>
+                    <h2>Data Science Corner</h2>
+                    <p></p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/sdubey72" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/shraddha-dubey-8a8016b7" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:sdubey72@lakers.mercyhurst.edu" title="Email" class="fa fa-envelope"></a></li>
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="/post/data-visualization/">Data Visualization </a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-09-27'>
+                                    September 27, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="/post/data-visualization-2/">Data Visualization -2</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-09-27'>
+                                    September 27, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="/post/">Post</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-09-27'>
+                                    September 27, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/r/">R</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/blogdown/">blogdown</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+            </ul>
+
+            <p class="copyright">&copy; 2017 DataScience. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+      </div>
+      <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+      
+
+      
+        
+      
+
+      
+      
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="/js/backToTop.js"></script>
+      
+
+      
+
+      
+      <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>
+

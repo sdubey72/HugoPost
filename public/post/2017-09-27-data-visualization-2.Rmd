@@ -1,0 +1,84 @@
+---
+title: Data Visualization -2
+author: Shraddha Dubey
+date: '2017-09-27'
+slug: data-visualization-2
+categories:
+  - blogdown
+  - R
+tags:
+  - dplyr
+  - ggplot2
+  - Lahman
+---
+
+# **Bar graph and Histogram**
+
+In this post we'll learn to draw Bar-graph and Histogram using the following libraries.
+> dplyr ,
+> Lahman ,
+> ggplot2 and
+> ggiraph
+
+```{r, include=FALSE}
+library(dplyr)
+library(Lahman)
+library(ggplot2)
+library(ggiraph)
+
+```
+
+Here we will all the teams who played in the year 1980's.
+
+```{r}
+data1<-Teams%>%
+  filter(yearID==1980)%>%
+  select(teamID,HR)
+
+data1
+```  
+
+and plot a bar-graph !
+
+```{r, echo=TRUE}
+ggplot()+
+  geom_bar(data = data1 , aes(x=teamID,y=HR),stat = "identity",color="red",fill="blue")
+```
+
+Here it is !
+But it looks very cluttered . Lets see if we can change the axis and make it more readable.
+
+```{r, echo=TRUE}
+data2<-Teams%>%
+  filter(yearID==1980)%>%
+  select(name,HR)%>%
+  arrange(HR)
+
+data2$name<-factor(data2$name,levels = data2$name)
+
+data2
+```
+
+```{r}
+ggplot()+
+  geom_bar(data = data2 , aes(x=name,y=HR),stat = "identity",color="black",fill="light blue")+
+  coord_flip()
+
+```
+
+Now lets try to do some histogram.
+
+```{r, echo=TRUE}
+df<-Master%>%
+  filter(!is.na(weight))%>%
+  select(weight)
+
+```
+
+```{r, echo=TRUE}
+ggplot()+
+  geom_histogram(data=df,aes(x=weight),color="white",fill="blue")+
+  ggtitle("baseball players weights")
+
+```
+

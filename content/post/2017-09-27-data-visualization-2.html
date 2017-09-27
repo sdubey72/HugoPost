@@ -1,0 +1,106 @@
+---
+title: Data Visualization -2
+author: Shraddha Dubey
+date: '2017-09-27'
+slug: data-visualization-2
+categories:
+  - blogdown
+  - R
+tags:
+  - dplyr
+  - ggplot2
+  - Lahman
+---
+
+
+
+<div id="bar-graph-and-histogram" class="section level1">
+<h1><strong>Bar graph and Histogram</strong></h1>
+<p>In this post we’ll learn to draw Bar-graph and Histogram using the following libraries. &gt; dplyr , &gt; Lahman , &gt; ggplot2 and &gt; ggiraph</p>
+<p>Here we will all the teams who played in the year 1980’s.</p>
+<pre class="r"><code>data1&lt;-Teams%&gt;%
+  filter(yearID==1980)%&gt;%
+  select(teamID,HR)
+
+data1</code></pre>
+<pre><code>##    teamID  HR
+## 1     ATL 144
+## 2     BAL 156
+## 3     BOS 162
+## 4     CAL 106
+## 5     CHA  91
+## 6     CHN 107
+## 7     CIN 113
+## 8     CLE  89
+## 9     DET 143
+## 10    HOU  75
+## 11    KCA 115
+## 12    LAN 148
+## 13    MIN  99
+## 14    ML4 203
+## 15    MON 114
+## 16    NYA 189
+## 17    NYN  61
+## 18    OAK 137
+## 19    PHI 117
+## 20    PIT 116
+## 21    SDN  67
+## 22    SEA 104
+## 23    SFN  80
+## 24    SLN 101
+## 25    TEX 124
+## 26    TOR 126</code></pre>
+<p>and plot a bar-graph !</p>
+<pre class="r"><code>ggplot()+
+  geom_bar(data = data1 , aes(x=teamID,y=HR),stat = &quot;identity&quot;,color=&quot;red&quot;,fill=&quot;blue&quot;)</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Here it is ! But it looks very cluttered . Lets see if we can change the axis and make it more readable.</p>
+<pre class="r"><code>data2&lt;-Teams%&gt;%
+  filter(yearID==1980)%&gt;%
+  select(name,HR)%&gt;%
+  arrange(HR)
+
+data2$name&lt;-factor(data2$name,levels = data2$name)
+
+data2</code></pre>
+<pre><code>##                     name  HR
+## 1          New York Mets  61
+## 2       San Diego Padres  67
+## 3         Houston Astros  75
+## 4   San Francisco Giants  80
+## 5      Cleveland Indians  89
+## 6      Chicago White Sox  91
+## 7        Minnesota Twins  99
+## 8    St. Louis Cardinals 101
+## 9       Seattle Mariners 104
+## 10     California Angels 106
+## 11          Chicago Cubs 107
+## 12       Cincinnati Reds 113
+## 13        Montreal Expos 114
+## 14    Kansas City Royals 115
+## 15    Pittsburgh Pirates 116
+## 16 Philadelphia Phillies 117
+## 17         Texas Rangers 124
+## 18     Toronto Blue Jays 126
+## 19     Oakland Athletics 137
+## 20        Detroit Tigers 143
+## 21        Atlanta Braves 144
+## 22   Los Angeles Dodgers 148
+## 23     Baltimore Orioles 156
+## 24        Boston Red Sox 162
+## 25      New York Yankees 189
+## 26     Milwaukee Brewers 203</code></pre>
+<pre class="r"><code>ggplot()+
+  geom_bar(data = data2 , aes(x=name,y=HR),stat = &quot;identity&quot;,color=&quot;black&quot;,fill=&quot;light blue&quot;)+
+  coord_flip()</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Now lets try to do some histogram.</p>
+<pre class="r"><code>df&lt;-Master%&gt;%
+  filter(!is.na(weight))%&gt;%
+  select(weight)</code></pre>
+<pre class="r"><code>ggplot()+
+  geom_histogram(data=df,aes(x=weight),color=&quot;white&quot;,fill=&quot;blue&quot;)+
+  ggtitle(&quot;baseball players weights&quot;)</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/post/2017-09-27-data-visualization-2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>

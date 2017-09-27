@@ -12,16 +12,18 @@ tags:
   - ggplot2
 ---
 
-#### Data Visualization 
+![](/img/2014/09/pic01.jpg)
+
+#**Scattered plot**
 
 Data visualization is a general term that describes any effort to help people understand the significance of data by placing it in a visual context. Patterns, trends and correlations that might go undetected in text-based data can be exposed and recognized easier.
 
 Here we will explore following libraries 
 
-dplyr ,
-Lahman ,
-ggplot2 and
-ggiraph
+> dplyr ,
+> Lahman ,
+> ggplot2 and
+> ggiraph
 
 
 ```{r, include=FALSE}
