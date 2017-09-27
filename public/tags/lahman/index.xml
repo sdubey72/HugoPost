@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lahman on DataScience</title>
+    <link>https://shdubey.netlify.com/tags/lahman/</link>
+    <description>Recent content in Lahman on DataScience</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shdubey.netlify.com/tags/lahman/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Visualization </title>
+      <link>https://shdubey.netlify.com/post/data-visualization/</link>
+      <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://shdubey.netlify.com/post/data-visualization/</guid>
+      <description>Data VisualizationData visualization is a general term that describes any effort to help people understand the significance of data by placing it in a visual context. Patterns, trends and correlations that might go undetected in text-based data can be exposed and recognized easier.
+Here we will explore following libraries
+dplyr , Lahman , ggplot2 and ggiraph
+Lets fetch data from Lahman database about all the players whose Home runs are more than 400 and store it in a data frame df.</description>
+    </item>
+    
+  </channel>
+</rss>

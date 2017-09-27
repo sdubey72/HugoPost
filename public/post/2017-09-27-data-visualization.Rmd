@@ -1,0 +1,77 @@
+---
+title: 'Data Visualization '
+author: Shraddha Dubey
+date: '2017-09-27'
+slug: data-visualization
+categories:
+  - R
+  - blogdown
+tags:
+  - dplyr
+  - Lahman
+  - ggplot2
+---
+
+#### Data Visualization 
+
+Data visualization is a general term that describes any effort to help people understand the significance of data by placing it in a visual context. Patterns, trends and correlations that might go undetected in text-based data can be exposed and recognized easier.
+
+Here we will explore following libraries 
+
+dplyr ,
+Lahman ,
+ggplot2 and
+ggiraph
+
+
+```{r, include=FALSE}
+library(dplyr)
+library(Lahman)
+library(ggplot2)
+library(ggiraph)
+
+```
+
+Lets fetch data from Lahman database about all the players whose Home runs are more than 400 and store it in a data frame df.
+
+```{r, echo=TRUE}
+
+df<-Batting%>%
+  group_by(playerID)%>%
+  summarise(Career_HR = sum(HR), Career_SO=sum(SO))%>%
+  filter(Career_HR>=400)
+
+df
+```
+
+Now that we have list of all the desired players but we have their playerId insted of names. So lets join the result of previous data fram with Mastre table using Player ID to get first and last names of all the players.
+
+```{r, echo=TRUE}
+
+HR_VS_SO<-inner_join(df,Master,by=c("playerID"))%>%
+  select(nameFirst,nameLast,Career_HR, Career_SO)
+
+HR_VS_SO
+```
+
+Hey ! we got the names of all the players. Lets do one more change and merge first name and last name of the players and create a new column.
+
+```{r, echo=TRUE}
+
+HR_VS_SO$name<-paste(HR_VS_SO$nameFirst,HR_VS_SO$nameLast)
+
+HR_VS_SO
+
+```
+
+```{r}
+
+IntercGraph<-ggplot()+
+  geom_point_interactive(data = HR_VS_SO,aes(x=Career_SO, y=Career_HR,tooltip=name,data_id=nameLast))+
+  ggtitle("Career Homeruns vs. Strikeouts for Great Hitters")+
+  xlab("Career Strikeout")+
+  ylab("Career Homerun")
+
+ggiraph(code =print(IntercGraph),hover_css = "fill:red;stroke:black")
+
+```
