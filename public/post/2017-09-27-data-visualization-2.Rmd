@@ -35,7 +35,6 @@ data1<-Teams%>%
   filter(yearID==1980)%>%
   select(teamID,HR)
 
-data1
 ```  
 
 and plot a bar-graph !

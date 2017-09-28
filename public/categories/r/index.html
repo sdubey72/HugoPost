@@ -35,7 +35,7 @@
         <meta property="og:title" content="R" />
 <meta property="og:description" content="HTML5 UP theme, Future Imperfect with some extra goodies, ported by Julio Pescador. Powered by Hugo" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://shdubey.netlify.com/categories/r/" />
+<meta property="og:url" content="/categories/r/" />
 
 
 
@@ -120,7 +120,7 @@
                 <a class="fa-search" href="#search">Search</a>
                 <form id="search" method="get" action="//google.com/search">
                     <input type="text" name="q" placeholder="Search" />
-                    <input type="hidden" name="as_sitesearch" value="https://shdubey.netlify.com/">
+                    <input type="hidden" name="as_sitesearch" value="/">
                 </form>
             </li>
             <li class="menu">
@@ -137,7 +137,7 @@
         <section>
             <form class="search" method="get" action="//google.com/search">
                 <input type="text" name="q" placeholder="Search" />
-                <input type="hidden" name="q" value="site:https://shdubey.netlify.com/">
+                <input type="hidden" name="q" value="site:/">
             </form>
         </section>
 
@@ -184,15 +184,15 @@
 
                 
                     <li>
-                        <a href="https://shdubey.netlify.com/post/data-visualization/"><p>Data Visualization </p></a>
+                        <a href="/post/data-visualization/"><p>Data Visualization </p></a>
                     </li>
                 
                     <li>
-                        <a href="https://shdubey.netlify.com/post/data-visualization-2/"><p>Data Visualization -2</p></a>
+                        <a href="/post/data-visualization-2/"><p>Data Visualization -2</p></a>
                     </li>
                 
                     <li>
-                        <a href="https://shdubey.netlify.com/post/"><p>Post</p></a>
+                        <a href="/post/"><p>Post</p></a>
                     </li>
                 
             </ul>
@@ -211,7 +211,7 @@
     <header>
     <div class="title">
         
-            <h2><a href="https://shdubey.netlify.com/post/data-visualization/">Data Visualization </a></h2>
+            <h2><a href="/post/data-visualization/">Data Visualization </a></h2>
         
         
     </div>
@@ -242,7 +242,7 @@ Here we will explore following libraries</p>
 
     <footer>
         <ul class="actions">
-            <li><a href="https://shdubey.netlify.com/post/data-visualization/" class="button big">Continue Reading</a></li>
+            <li><a href="/post/data-visualization/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -285,7 +285,7 @@ Here we will explore following libraries</p>
     <header>
     <div class="title">
         
-            <h2><a href="https://shdubey.netlify.com/post/data-visualization-2/">Data Visualization -2</a></h2>
+            <h2><a href="/post/data-visualization-2/">Data Visualization -2</a></h2>
         
         
     </div>
@@ -305,74 +305,20 @@ Here we will explore following libraries</p>
 
     
 
-    <p><p>Bar graph and Histogram
+    <p>Bar graph and Histogram
 In this post we’ll learn to draw Bar-graph and Histogram using the following libraries. &gt; dplyr , &gt; Lahman , &gt; ggplot2 and &gt; ggiraph
 Here we will all the teams who played in the year 1980’s.
 data1&lt;-Teams%&gt;%
 filter(yearID==1980)%&gt;%
 select(teamID,HR)
-data1</p>
-
-<h2 id="teamid-hr">teamID HR</h2>
-
-<h2 id="1-atl-144">1 ATL 144</h2>
-
-<h2 id="2-bal-156">2 BAL 156</h2>
-
-<h2 id="3-bos-162">3 BOS 162</h2>
-
-<h2 id="4-cal-106">4 CAL 106</h2>
-
-<h2 id="5-cha-91">5 CHA 91</h2>
-
-<h2 id="6-chn-107">6 CHN 107</h2>
-
-<h2 id="7-cin-113">7 CIN 113</h2>
-
-<h2 id="8-cle-89">8 CLE 89</h2>
-
-<h2 id="9-det-143">9 DET 143</h2>
-
-<h2 id="10-hou-75">10 HOU 75</h2>
-
-<h2 id="11-kca-115">11 KCA 115</h2>
-
-<h2 id="12-lan-148">12 LAN 148</h2>
-
-<h2 id="13-min-99">13 MIN 99</h2>
-
-<h2 id="14-ml4-203">14 ML4 203</h2>
-
-<h2 id="15-mon-114">15 MON 114</h2>
-
-<h2 id="16-nya-189">16 NYA 189</h2>
-
-<h2 id="17-nyn-61">17 NYN 61</h2>
-
-<h2 id="18-oak-137">18 OAK 137</h2>
-
-<h2 id="19-phi-117">19 PHI 117</h2>
-
-<h2 id="20-pit-116">20 PIT 116</h2>
-
-<h2 id="21-sdn-67">21 SDN 67</h2>
-
-<h2 id="22-sea-104">22 SEA 104</h2>
-
-<h2 id="23-sfn-80">23 SFN 80</h2>
-
-<h2 id="24-sln-101">24 SLN 101</h2>
-
-<h2 id="25-tex-124">25 TEX 124</h2>
-
-<h2 id="26-tor-126">26 TOR 126</h2>
-
-<p>and plot a bar-graph !</p>
-</p>
+and plot a bar-graph !
+ggplot()+
+geom_bar(data = data1 , aes(x=teamID,y=HR),stat = &quot;identity&quot;,color=&quot;red&quot;,fill=&quot;blue&quot;)
+Here it is ! But it looks very cluttered . Lets see if we can change the axis and make it more readable.</p>
 
     <footer>
         <ul class="actions">
-            <li><a href="https://shdubey.netlify.com/post/data-visualization-2/" class="button big">Continue Reading</a></li>
+            <li><a href="/post/data-visualization-2/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -522,7 +468,7 @@ data1</p>
                     <li>
                         <article>
                             <header>
-                                <h3><a href="https://shdubey.netlify.com/post/data-visualization/">Data Visualization </a></h3>
+                                <h3><a href="/post/data-visualization/">Data Visualization </a></h3>
                                 
                                 <time class="published" datetime=
                                     '2017-09-27'>
@@ -534,7 +480,7 @@ data1</p>
                     <li>
                         <article>
                             <header>
-                                <h3><a href="https://shdubey.netlify.com/post/data-visualization-2/">Data Visualization -2</a></h3>
+                                <h3><a href="/post/data-visualization-2/">Data Visualization -2</a></h3>
                                 
                                 <time class="published" datetime=
                                     '2017-09-27'>
@@ -546,7 +492,7 @@ data1</p>
                     <li>
                         <article>
                             <header>
-                                <h3><a href="https://shdubey.netlify.com/post/">Post</a></h3>
+                                <h3><a href="/post/">Post</a></h3>
                                 
                                 <time class="published" datetime=
                                     '2017-09-27'>
